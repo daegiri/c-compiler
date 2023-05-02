@@ -17,11 +17,14 @@ enum {
 struct position {
     uint64_t line;
     uint64_t column;
+    const char *filename;
 };
 
 struct token {
     int type;
     int flags;
+
+    struct position position;
 
     union {
         char c_val;

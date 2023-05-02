@@ -10,3 +10,4 @@ enum {
 };
 
 int compile_file(const char *filename, const char *output, int flags);
+void compiler_error(struct compile_process *compile_process, const char *msg, ...);

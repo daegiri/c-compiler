@@ -70,6 +70,12 @@ void *vector_read_at(vector *v, size_t index) {
     return (char*)v->data + index * v->element_size;
 }
 
+void *vector_back(vector *v) {
+    if (v->size == 0) return NULL;
+
+    return vector_read_at(v, v->read_index - 1);
+}
+
 void vector_rewind(vector *v) {
     v->read_index = 0;
 }

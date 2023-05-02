@@ -23,5 +23,6 @@ void vector_pop(vector *v);
 void *vector_peek(vector *v);
 void *vector_read(vector *v);
 void *vector_read_at(vector *v, size_t index);
+void *vector_back(vector *v);
 
 void vector_rewind(vector *v);

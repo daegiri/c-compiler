@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdarg.h>
 
 #include "compiler.h"
 #include "lexer.h"
@@ -28,4 +29,20 @@ int compile_file(const char *filename, const char *output, int flags) {
     }
 
     return COMPILER_FILE_COMPILED_SUCCESSFULLY;
+}
+
+void compiler_error(struct compile_process *compile_process, const char *msg, ...) {
+    va_list args;
+    va_start(args, msg);
+    vfprintf(stderr, msg, args);
+    va_end(args);
+
+    fprintf(stderr, "on line: %i, column: %i, in file: %s\n", 
+        compile_process->position.line, 
+        compile_process->position.column, 
+        compile_process->position.column, 
+        compile_process->c_file.abs_path
+    );
+
+    exit(1);
 }
